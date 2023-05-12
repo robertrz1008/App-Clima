@@ -1,0 +1,29 @@
+nav{
+    width: 100%;
+    height: 70px;
+    background-color: rgb(223, 221, 114);
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h1{
+    margin-left: 50px;
+    font-size: 2.2rem;
+    font-weight: lighter;
+}
+.rutas{
+    width: 210px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 70px;
+}
+.rutas > .ruta{
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 1.3em;
+    cursor: pointer;
+}
