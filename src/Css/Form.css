@@ -1,0 +1,15 @@
+form{
+    display: flex;
+    justify-content: center;
+    
+}
+.form-content{
+    margin-top: 20px;
+    width: 70%;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+button{
+    text-align: center;
+}

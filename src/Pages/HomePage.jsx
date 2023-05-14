@@ -1,7 +1,10 @@
 import React from 'react'
+import Form from '../Components/Form'
 
 export default function HomePage() {
   return (
-    <div>HomePage</div>
+    <div>
+      <Form/>
+    </div>
   )
 }

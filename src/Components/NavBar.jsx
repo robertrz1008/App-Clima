@@ -9,7 +9,7 @@ export default function NavBar() {
         <nav>
             <h1>App Clima</h1>
             <div className='rutas'>
-              <NavLink className='ruta' to="/home">Clima</NavLink>
+              <NavLink className='ruta' to="/">Clima</NavLink>
               <NavLink className='ruta' to="/login">Iniciar Session</NavLink>
             </div>
         </nav>
