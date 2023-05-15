@@ -6,9 +6,6 @@ form{
 .form-content{
     margin-top: 20px;
     width: 70%;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
 }
 button{
     text-align: center;

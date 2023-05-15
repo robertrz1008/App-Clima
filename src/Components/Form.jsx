@@ -6,7 +6,7 @@ import "../Css/Form.css"
 
 export default function Form() {
 
-    const { weatherRequest, weather } = useContext(WeatherContex)
+    const { weatherRequest, weather, forecast } = useContext(WeatherContex)
 
     const [coutry, setCountry] = useState("")
     const [city, setCity] = useState("")
@@ -17,6 +17,8 @@ export default function Form() {
         setCountry("")
         setCity("")
         console.log(weather)
+        console.log("pronostico")
+        console.log(forecast)
     }
 
 
