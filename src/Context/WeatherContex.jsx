@@ -7,10 +7,10 @@ export const WeatherContex = createContext();
 
 export default function WeatherContexProvider(prop) {
 
-  const [weather, setWeather] = useState([]);
+  const [weather, setWeather] = useState();
   const [forecast, setForecast] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(true)
 
   let URL_WEATHER = "https://api.openweathermap.org/data/2.5/weather?"
   let URL_FORECAST = "https://api.openweathermap.org/data/2.5/forecast?"
@@ -30,26 +30,31 @@ export default function WeatherContexProvider(prop) {
         return response.json()
       }) 
       .then((weatherData) => {
-        console.log(weatherData)
         setWeather(weatherData)
+        setShow(true)
+        setLoading(false)
       })
       .catch(function (error) {
-          setError(true)
+          setLoading(false)
+          setShow(true)
           console.log(error);
       })
 
       URL_FORECAST = URL_FORECAST + LOCATION + city + "," + country + API_ID
-      // solicitando la url del pronostico
+      //solicitando la url del pronostico
       await axios.get(URL_FORECAST)
         .then(function (response) {
           if(!response.ok) throw {response}
-          return response.json()
+            return response.json()
         }) 
         .then((forecastrData) => {
-          setForecast(forecastrData)
+            setForecast(forecastrData)
+            setLoading(false)
+            setShow(true)
         })
         .catch(function (error) {
-            setError(true)
+            setLoading(false)
+            setShow(false)
             console.log(error);
         })
   }
@@ -59,7 +64,9 @@ export default function WeatherContexProvider(prop) {
     <WeatherContex.Provider value={{
       weatherRequest,
       weather,
-      forecast
+      loading,
+      forecast,
+      show,
     }}>
       {prop.children}
     </WeatherContex.Provider>
