@@ -1,12 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import { useContext } from 'react'
-import { WeatherContex } from '../Context/WeatherContex'
 import "../Css/Form.css"
 
-export default function Form() {
-
-    const { weatherRequest, weather, forecast } = useContext(WeatherContex)
+export default function Form({ weatherRequest, weather, forecast }) {
 
     const [coutry, setCountry] = useState("")
     const [city, setCity] = useState("")

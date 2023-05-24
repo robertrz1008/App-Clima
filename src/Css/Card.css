@@ -1,0 +1,11 @@
+.card-cont{
+    width: 500px;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    margin: auto;
+}
+.card-icon{
+    width: 110px;
+    height: 110px;
+}
