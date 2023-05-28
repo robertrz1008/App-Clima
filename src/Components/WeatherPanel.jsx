@@ -18,6 +18,8 @@ export default function WeatherPanel() {
 
   async function weatherRequest(city,country) {
     setLoading(true)
+    setForecast([])
+    setWeather([])
 
     URL_WEATHER = URL_WEATHER + LOCATION + city + "," + country + API_ID
     // solicitando la url del clima
@@ -27,10 +29,7 @@ export default function WeatherPanel() {
         return response.json()
       }) 
       .then((weatherData) => {
-        setLoading(false)
-        setShow(true)
         setWeather(weatherData)
-        console.log(weather)
       })
       .catch(error => {
           setLoading(false)
@@ -38,7 +37,7 @@ export default function WeatherPanel() {
       })
 
       URL_FORECAST = URL_FORECAST + LOCATION + city + API_ID
-      //solicitando la url del pronostico
+      // //solicitando la url del pronostico
       await fetch(URL_FORECAST)
         .then(function (response) {
           if(!response.ok) throw {response}
@@ -46,19 +45,18 @@ export default function WeatherPanel() {
         }) 
         .then((forecastrData) => {
             setForecast(forecastrData)
-            console.log(fore)
             setLoading(false)
             setShow(true)
-            
         })
         .catch( error => {
-          console.log(error)
+          console.log("pronostico y ano funciona")
             setLoading(false)
             setShow(false)
         })
-
-
   }
+
+  console.log(weather)
+  console.log(forecast)
   
 
   return (

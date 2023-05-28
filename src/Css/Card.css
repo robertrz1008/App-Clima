@@ -1,9 +1,12 @@
 .card-cont{
     width: 500px;
-    background-color: rgb(37, 25, 71);
+    background-color: rgb(23, 35, 75);
     color: white;
     border-radius: 10px;
     margin: auto;
+}
+.weather-totle{
+    font-weight: lighter;
 }
 .card-sections{
     display: flex;
@@ -13,7 +16,7 @@
     flex-direction: column;
     align-items: start;
     padding: 10px;
-    font-family: sans-serif;
+    
 }
 .card-cont-icon{
     overflow: hidden;
@@ -39,4 +42,22 @@ h6{
     width: 90%;
     margin: auto;
     border-bottom: 1px solid rgb(187, 177, 177);
+}
+
+/* FORECAST */
+.card-forecast{
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fore-cont-img{
+    height: 50px;
+    overflow: hidden;
+}
+.fore-cont-img img{
+    width: 80px;
+    height: 80px;
+    position: relative;
+    bottom: 17px;
 }
