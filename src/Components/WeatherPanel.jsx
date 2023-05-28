@@ -8,7 +8,6 @@ export default function WeatherPanel() {
 
   const [weather, setWeather] = useState();
   const [forecast, setForecast] = useState([]);
-  const [location, setLocation] = useState({})
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false)
 
@@ -30,17 +29,15 @@ export default function WeatherPanel() {
       .then((weatherData) => {
         setLoading(false)
         setShow(true)
-        console.log(weather)
         setWeather(weatherData)
+        console.log(weather)
       })
       .catch(error => {
           setLoading(false)
-          console.log("fracasado")
           setShow(false)
-          console.log(error);
       })
 
-      URL_FORECAST = URL_FORECAST + LOCATION + city + "," + country + API_ID
+      URL_FORECAST = URL_FORECAST + LOCATION + city + API_ID
       //solicitando la url del pronostico
       await fetch(URL_FORECAST)
         .then(function (response) {
@@ -49,18 +46,20 @@ export default function WeatherPanel() {
         }) 
         .then((forecastrData) => {
             setForecast(forecastrData)
+            console.log(fore)
             setLoading(false)
             setShow(true)
+            
         })
         .catch( error => {
+          console.log(error)
             setLoading(false)
             setShow(false)
-            console.log("pronostico fallado")
-            console.log(error);
         })
 
 
   }
+  
 
   return (
     <React.Fragment>
@@ -72,6 +71,7 @@ export default function WeatherPanel() {
         <Card 
             weather={weather}
             loading={loading}
+            forecast={forecast}
             show={show}
             />
     </React.Fragment>
