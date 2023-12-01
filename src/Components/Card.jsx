@@ -2,7 +2,7 @@ import React from 'react'
 import Spinner from './Spinner'
 import "../Css/Card.css"
 
-export default function Card({weather,forecast,loading,show}) {
+export default function Card({weather,forecast,loading,show, error}) {
 
   const weatherObj = {...weather}
   var today = new Date()
@@ -33,68 +33,62 @@ export default function Card({weather,forecast,loading,show}) {
 
   }
  
-
-  return (
-    <div>
-        {
-          show === true ? (
-
-
-              <div className='card-cont '>
-                  <div className='card-sections'>
-                      <section className='card-section-1 '>
-                            <h1 className='fs-7 weather-totle'>{weather.name.toUpperCase()}</h1>
-                            <h5>{date}</h5>
-                            <div className='d-flex mt-2'>
-                                <div className='card-cont-icon '>
-                                  <img src={iconUrl} alt="icon" />
-                                </div>
-                                <h1 className='fs-10'>{(weather.main.temp - 273.15).toFixed(1)}°C</h1>
-                            </div>
-                    </section>
-                    <section className='card-section-2'>
-                            <h6>Temperatura maxima: {(weather.main.temp_max - 273.15).toFixed(1)}°C</h6>
-                            <h6>Temperatura minima: {(weather.main.temp_min - 273.15).toFixed(1)}°C</h6>
-                            <h6>Sensacion temica: {(weather.main.feels_like - 273.15).toFixed(1)}°C</h6>
-                            <h6>Humedad: { weather.main.humidity}%</h6>
-                    </section>
-                  </div>
-
-
-                  <div className='linea'></div>
-
-
-                  <div className='card-section2 w-100 d-flex justify-content-around mt-3'>
-                    <div className='card-forecast'>
-                        <h6>{foreDate}</h6>
-                        <div className='fore-cont-img'>
-                            <img  src={url + forecast.list[9].weather[0].icon + ".png"} alt="icon" /> 
-                        </div>
-                        <h4>{(forecast.list[9].main.temp - 273.15).toFixed(1)}°C</h4>
+  if(show && !error){
+    return(
+      <div className='card-cont '>
+      <div className='card-sections'>
+          <section className='card-section-1 '>
+                <h1 className='fs-7 weather-totle'>{weather.name.toUpperCase()}</h1>
+                <h5>{date}</h5>
+                <div className='d-flex mt-2'>
+                    <div className='card-cont-icon '>
+                      <img src={iconUrl} alt="icon" />
                     </div>
-                    <div className='card-forecast'>
-                        <h6>{foreDate2}</h6>
-                        <div className='fore-cont-img'>
-                            <img  src={url + forecast.list[12].weather[0].icon + ".png"} alt="icon" /> 
-                        </div>
-                        <h4>{(forecast.list[15].main.temp - 273.15).toFixed(1)}°C</h4>
-                    </div>
-                    <div className='card-forecast'>
-                        <h6>{foreDate3}</h6>
-                        <div className='fore-cont-img'>
-                            <img  src={url + forecast.list[25].weather[0].icon + ".png"} alt="icon" /> 
-                        </div>
-                        <h4>{(forecast.list[25].main.temp - 273.15).toFixed(1)}°C</h4>
-                    </div>
-                  </div>
+                    <h1 className='fs-10'>{(weather.main.temp - 273.15).toFixed(1)}°C</h1>
+                </div>
+        </section>
+        <section className='card-section-2'>
+                <h6>Temperatura maxima: {(weather.main.temp_max - 273.15).toFixed(1)}°C</h6>
+                <h6>Temperatura minima: {(weather.main.temp_min - 273.15).toFixed(1)}°C</h6>
+                <h6>Sensacion temica: {(weather.main.feels_like - 273.15).toFixed(1)}°C</h6>
+                <h6>Humedad: { weather.main.humidity}%</h6>
+        </section>
+      </div>
 
 
-              </div>
-          ): (
+      <div className='linea'></div>
+
+
+      <div className='card-section2 w-100 d-flex justify-content-around mt-3'>
+        <div className='card-forecast'>
+            <h6>{foreDate}</h6>
+            <div className='fore-cont-img'>
+                <img  src={url + forecast.list[9].weather[0].icon + ".png"} alt="icon" /> 
+            </div>
+            <h4>{(forecast.list[9].main.temp - 273.15).toFixed(1)}°C</h4>
+        </div>
+        <div className='card-forecast'>
+            <h6>{foreDate2}</h6>
+            <div className='fore-cont-img'>
+                <img  src={url + forecast.list[12].weather[0].icon + ".png"} alt="icon" /> 
+            </div>
+            <h4>{(forecast.list[15].main.temp - 273.15).toFixed(1)}°C</h4>
+        </div>
+        <div className='card-forecast'>
+            <h6>{foreDate3}</h6>
+            <div className='fore-cont-img'>
+                <img  src={url + forecast.list[25].weather[0].icon + ".png"} alt="icon" /> 
+            </div>
+            <h4>{(forecast.list[25].main.temp - 273.15).toFixed(1)}°C</h4>
+        </div>
+      </div>
+
+
+  </div>
+    )
+  }else if(!show && error){
+      return (
             <h1 className='text-center link-light'>no encontrado</h1>
-          )
-        }
-       
-    </div>
-  )
+      )
+  }
   }

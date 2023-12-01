@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-import axios from 'axios';
 import Card from './Card';
 import Form from './Form';
 
@@ -8,6 +7,7 @@ export default function WeatherPanel() {
 
   const [weather, setWeather] = useState();
   const [forecast, setForecast] = useState([]);
+  const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false)
 
@@ -34,6 +34,7 @@ export default function WeatherPanel() {
       .catch(error => {
           setLoading(false)
           setShow(false)
+          setError(true)
       })
 
       URL_FORECAST = URL_FORECAST + LOCATION + city + API_ID
@@ -47,16 +48,15 @@ export default function WeatherPanel() {
             setForecast(forecastrData)
             setLoading(false)
             setShow(true)
+            setError(false)
         })
         .catch( error => {
           console.log("pronostico y ano funciona")
             setLoading(false)
             setShow(false)
+            setError(true)
         })
   }
-
-  console.log(weather)
-  console.log(forecast)
   
 
   return (
@@ -71,6 +71,7 @@ export default function WeatherPanel() {
             loading={loading}
             forecast={forecast}
             show={show}
+            error={error}
             />
     </React.Fragment>
   )

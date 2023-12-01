@@ -22,9 +22,8 @@ export default function Form({ weatherRequest, weather, forecast }) {
     return (
         <form onSubmit={submit}>
             <div className=" mb-3 form-content">
-                <input className="form-control form-control-lg mt-2" value={coutry} onChange={(e) => setCountry(e.target.value)} type="text" placeholder="Ingrese el pais" aria-label=".form-control-lg example" /> 
                 <input className="form-control form-control-lg mt-2" value={city} onChange={(e) => setCity(e.target.value)} type="text" placeholder="Ingrese la ciudad" aria-label=".form-control-lg example"/>
-                <center><button type="button " className="btn btn-outline-success">Success</button></center>
+                <center><button style={{margin: "10px"}} type="button " className="btn btn-success">buscar</button></center>
             </div>
         </form>
     )
